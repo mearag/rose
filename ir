@@ -72,7 +72,7 @@
         "security": "tls",
         "tlsSettings": {
           "allowInsecure": true,
-          "serverName": "haj.deadrose.online",
+          "serverName": "dd.noting.space",
           "alpn": [
             "h2",
             "http/1.1"
@@ -83,7 +83,7 @@
         "wsSettings": {
           "path": "/ws",
           "headers": {
-            "Host": "haj.deadrose.online"
+            "Host": "dd.noting.space"
           }
         },
         "sockopt": {
