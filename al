@@ -52,11 +52,11 @@
       "settings": {
         "vnext": [
           {
-            "address": " 95.182.98.121",
+            "address": "113.30.190.71",
             "port": 2083,
             "users": [
               {
-                "id": "97188e79-0623-4935-b341-b190d9a9f703",
+                "id": "a7fbdf1d-8dce-4521-8550-dd34ee18bbe9",
                 "alterId": 0,
                 "email": "t@t.tt",
                 "security": "auto",
@@ -141,4 +141,3 @@
     ]
   }
 }
-
