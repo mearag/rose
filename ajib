@@ -39,12 +39,12 @@
       "settings": {
         "vnext": [
           {
-            "address": "95.182.96.146",
+            "address": "45.67.139.33",
             "port": 2096,
             "users": [
               {
                 "encryption": "none",
-                "id": "3ac1e3de-15c9-4016-87f6-d8dde25e7d67",
+                "id": "56b8a299-69e6-4723-98b9-0b93ca631661",
                 "level": 8
               }
             ]
