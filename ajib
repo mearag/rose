@@ -1,1 +1,103 @@
-
+{
+  "dns": {
+    "hosts": {
+      "domain:googleapis.cn": "googleapis.com"
+    },
+    "servers": [
+      "https://dns.controld.com/14ywbtpnksd"
+    ]
+  },
+  "inbounds": [
+    {
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": ["http", "tls", "fakedns"],
+        "enabled": true,
+        "routeOnly": false
+      },
+      "tag": "socks"
+    }
+  ],
+  "log": {
+    "loglevel": "warning"
+  },
+  "outbounds": [
+    {
+      "mux": {
+        "concurrency": 8,
+        "enabled": true,
+        "xudpConcurrency": 8,
+        "xudpProxyUDP443": "reject"
+      },
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "45.67.139.33",
+            "port": 2096,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "56b8a299-69e6-4723-98b9-0b93ca631661",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "sockopt": { "dialerProxy": "fragment" },
+        "tlsSettings": {
+          "allowInsecure": false,
+          "alpn": ["h3", "h2"],
+          "fingerprint": "chrome",
+          "serverName": "00EA5Be3DEa9.notiNG.SPacE",
+          "show": false
+        },
+        "wsSettings": {
+          "headers": { "Host": "00EA5Be3DEa9.notiNG.SPacE" },
+          "path": "/3f95baced21f"
+        }
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "freedom",
+      "settings": { "domainStrategy": "UseIP" },
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": { "response": { "type": "http" } },
+      "tag": "block"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {
+        "fragment": { "interval": "1-2", "length": "20-40", "packets": "tlshello" },
+        "noises": [{ "delay": "10-14", "packet": "10-20", "type": "rand" }]
+      },
+      "streamSettings": { "network": "tcp", "sockopt": { "TcpNoDelay": true, "mark": 255 } },
+      "tag": "fragment"
+    }
+  ],
+  "remarks": "2096",
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      { "ip": ["223.5.5.5"], "outboundTag": "direct", "port": "53", "type": "field" },
+      { "network": "udp", "outboundTag": "block", "port": "443", "type": "field" },
+      { "domain": ["geosite:private"], "outboundTag": "direct", "type": "field" },
+      { "ip": ["geoip:private"], "outboundTag": "direct", "type": "field" },
+      { "outboundTag": "proxy", "port": "0-65535", "type": "field" }
+    ]
+  }
+}
