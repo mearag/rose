@@ -59,11 +59,11 @@
           "allowInsecure": false,
           "alpn": ["h3", "h2"],
           "fingerprint": "chrome",
-          "serverName": "lOkerTOP.LililoOP.Space",
+          "serverName": "lOkerTOPP.LililoOP.Space",
           "show": false
         },
         "wsSettings": {
-          "headers": { "Host": "lOkerTOP.LililoOP.Space" },
+          "headers": { "Host": "lOkerTOPP.LililoOP.Space" },
           "path": "/3f95baced21f"
         }
       },
